@@ -1,8 +1,8 @@
-import { IsDefined, IsBoolean, IsUUID } from "class-validator";
+import { IsDefined, IsUUID, IsBooleanString } from "class-validator";
 
 export class CardUser {
     
-    @IsBoolean()
+    @IsBooleanString()
     @IsDefined()
     isOwner: boolean;
     

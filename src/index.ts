@@ -52,7 +52,7 @@ app.post("/users", async (req: Request, res: Response) => {
   }
 });
 
-//Insertar datos en la lista
+//Crear una lista asociada a un tablero
 app.post("/boards/:boardId/lists", async (req: Request, res: Response) => {
   let listDto: List = plainToClass(List, req.body);
   listDto.boardId = req.params.boardId
@@ -96,7 +96,7 @@ app.get("/boards/:boardId/lists", async (req: Request, res: Response) => {
     }
   })
 
-  //Enpoint para ingresar los datos de las tarjetas y usuarios asociados
+  //Enpoint para asignar un usuario o persona registrada a una tarjeta
   app.post("/cards/:card_Id/users/:user_Id", async (req: Request, res: Response) => {
     let card_userdto: CardUser = plainToClass(CardUser, req.body);
     card_userdto.card_Id = req.params.card_Id
@@ -116,7 +116,7 @@ app.get("/boards/:boardId/lists", async (req: Request, res: Response) => {
     }
   });
 
-  //Endpoint para obtener el dueño de una tarjeta asociada
+  //Endpoint para obtener las tarjetas con su dueño asociado
   app.get("/cards/:card_Id/owner", async (req: Request, res: Response) => {
     const { card_Id } = req.params;
     try {
